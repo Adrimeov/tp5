@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import main.LinkedList;
 import main.LinkedListInterface;
+import main.MyList;
 import main.MyListInterface;
 import main.Operator;
 
@@ -131,20 +132,34 @@ public class TP5 {
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("Le is_superset devrait avoir créer un tableau de 1 élément.", 1, resultatListe.getAt(tailleListe - 1).size());
 		assertEquals("Le is_superset devrait avoir créer un tableau avec l'élément FALSE.", "false", resultatListe.getAt(tailleListe-1).get(0));
-StringBuilder stringContent = new StringBuilder();
-		
-		for(int i = 0; i < resultatListe.getSize(); i++){
-			stringContent.append(" " + resultatListe.getAt(i));
-		}	
-		
-		System.out.println("My List : " + stringContent);
 	}
 	
 	/**
-	 * 
+	 * MyList, methodes add, getSize, getAt, setAt
 	 */
-	@Test
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
 	public void test7() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
 		
+		ArrayList<Object> unArray2 = new ArrayList<Object>();
+		unArray2.add(3);
+		unArray2.add(4);
+		
+		MyList uneListe = new MyList();
+		uneListe.add(unArray);
+		
+		assertEquals("La liste MyList devrait avoir une taille de 1.", 1, uneListe.getSize());
+		assertEquals("La liste devrait contenir une liste de 3 éléments.", 3, uneListe.getAt(0).size());
+		
+		uneListe.setAt(unArray2, 0);
+		assertEquals("La liste MyList devrait avoir une taille de 1.", 1, uneListe.getSize());
+		assertEquals("La liste devrait contenir une liste de 2 éléments.", 2, uneListe.getAt(0).size());
+		
+		uneListe.getAt(uneListe.getSize() + 1); // Erreur
 	}
+	
+	
 }

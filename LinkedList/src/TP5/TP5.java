@@ -161,5 +161,98 @@ public class TP5 {
 		uneListe.getAt(uneListe.getSize() + 1); // Erreur
 	}
 	
+	/**
+	 * MyList, methodes removeAt
+	 */
+	@Test()
+	public void test8() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
+		
+		MyList uneListe = new MyList();
+		uneListe.add(unArray);
+		
+		assertEquals("La liste MyList devrait avoir une taille de 1.", 1, uneListe.getSize());
+		assertEquals("La liste devrait contenir une liste de 3 éléments.", 3, uneListe.getAt(0).size());
+		
+		uneListe.removeAt(0);
+		assertEquals("La liste MyList devrait avoir une taille de 0.", 0, uneListe.getSize());
+	}
 	
+	/**
+	 * MyList, methodes removeItem
+	 */
+	@Test()
+	public void test9() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
+		
+		ArrayList<Object> unArray2 = new ArrayList<Object>();
+		unArray2.add(3);
+		unArray2.add(4);
+		
+		MyList uneListe = new MyList();
+		uneListe.add(unArray);
+		uneListe.add(unArray2);
+		
+		assertEquals("La liste MyList devrait avoir une taille de 2.", 2, uneListe.getSize());
+		assertEquals("La liste devrait contenir une liste de 3 éléments a la position 0.", 3, uneListe.getAt(0).size());
+		assertEquals("La liste devrait contenir une liste de 2 éléments a la position 1.", 2, uneListe.getAt(1).size());
+		
+		uneListe.removeItem(unArray);
+		
+		assertEquals("La liste MyList devrait avoir une taille de 1.", 1, uneListe.getSize());
+		assertEquals("La liste devrait contenir une liste de 2 éléments a la position 0.", 2, uneListe.getAt(0).size());
+		
+		uneListe.removeItem(unArray2);
+		
+		assertEquals("La liste MyList devrait avoir une taille de 0.", 0, uneListe.getSize());
+	}
+	
+	/**
+	 * MyList, setSize
+	 */
+	@Test()
+	public void test10() throws IOException {
+		MyList uneListe = new MyList();
+		
+		assertEquals("La taille devrait être de 0.", 0, uneListe.getSize());
+		
+		uneListe.setSize(10);
+		
+		assertEquals("La taille devrait être de 10.", 10, uneListe.getSize() - 1);
+	}
+	
+	/**
+	 * MyList, methodes reset
+	 */
+	@Test()
+	public void test11() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
+		
+		ArrayList<Object> unArray2 = new ArrayList<Object>();
+		unArray2.add(3);
+		unArray2.add(4);
+		
+		MyList uneListe = new MyList();
+		uneListe.add(unArray);
+		uneListe.add(unArray2);
+		
+		assertEquals("La liste MyList devrait avoir une taille de 2.", 2, uneListe.getSize());
+		assertEquals("La liste devrait contenir une liste de 3 éléments a la position 0.", 3, uneListe.getAt(0).size());
+		assertEquals("La liste devrait contenir une liste de 2 éléments a la position 1.", 2, uneListe.getAt(1).size());
+		
+		uneListe.reset();
+		
+		assertEquals("La liste devrait avoir une taille de 0.", 0, uneListe.getSize());
+		assertNull("L'attribut start devrait etre null.", uneListe.getStart());
+		assertNull("L'attribut current devrait etre null.", uneListe.getCurrent());
+	}
 }

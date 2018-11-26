@@ -27,7 +27,14 @@ public class TP5 {
 	}
 
 	/**
-	 * Linked list, methode build avec operateur union
+	 * ===================================== Linked List =====================================
+	 * Petite note simplement pour dire que le coverage n'est pas de 100% pour cette classe
+	 * puisqu'il faudrait definir un nouveau operateur dans l'enum Operator. Il en manquerait 
+	 * un ne faisant pas partie du switch/case pour tester le cas par defaut.
+	 */
+	
+	/**
+	 * Linked list, methode build avec l'operateur union.
 	 */
 	@Test
 	public void test1() throws IOException {

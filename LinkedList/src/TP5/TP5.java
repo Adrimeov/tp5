@@ -31,6 +31,7 @@ public class TP5 {
 	 * Petite note simplement pour dire que le coverage n'est pas de 100% pour cette classe
 	 * puisqu'il faudrait definir un nouveau operateur dans l'enum Operator. Il en manquerait 
 	 * un ne faisant pas partie du switch/case pour tester le cas par defaut.
+	 * Permet, du meme coup, de tester la classe SetCalculator.
 	 */
 	
 	/**
@@ -53,6 +54,26 @@ public class TP5 {
 	}
 	
 	/**
+	 * Linked list, methode build avec l'operateur union.
+	 */
+	@Test
+	public void test18() throws IOException {
+		LinkedListInterface list = new LinkedList();
+		MyListInterface resultatListe;
+		ArrayList<Object> arr1 = new ArrayList<Object>();
+		ArrayList<Object> arr2 = new ArrayList<Object>();
+		arr1.add(1);
+		arr1.add(1);
+		arr2.add(4);
+		arr2.add(1);
+		resultatListe = list.build(Operator.UNION, arr1, arr2);
+		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
+		assertEquals("L'union devrait avoir creer un tableau de 2 elements en position 0.", 2, resultatListe.getAt(0).size());
+		assertEquals("L'union devrait avoir creer un tableau de 2 elements en position 1.", 2, resultatListe.getAt(1).size());
+		assertEquals("L'union devrait avoir creer un tableau de 3 elements en position 2.", 3, resultatListe.getAt(2).size());
+	}
+	
+	/**
 	 * Linked list, methode build avec operateur intersection
 	 */
 	@Test
@@ -62,11 +83,16 @@ public class TP5 {
 		ArrayList<Object> arr1 = new ArrayList<Object>();
 		ArrayList<Object> arr2 = new ArrayList<Object>();
 		arr1.add(1);
+		arr1.add(1);
 		arr2.add(4);
+		arr2.add(1);
+		
 		resultatListe = list.build(Operator.INTERSECTION, arr1, arr2);
-		int tailleListe = resultatListe.getSize();
+		
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
-		assertEquals("L'intersection devrait avoir creer un tableau de 0 element.", 0, resultatListe.getAt(tailleListe-1).size());
+		assertEquals("L'intersection devrait avoir creer un tableau de 2 elements en position 0.", 2, resultatListe.getAt(0).size());
+		assertEquals("L'intersection devrait avoir creer un tableau de 2 elements en position 1.", 2, resultatListe.getAt(1).size());
+		assertEquals("L'intersection devrait avoir creer un tableau de 2 elements en position 2.", 2, resultatListe.getAt(2).size());
 	}
 
 	/**
@@ -141,6 +167,10 @@ public class TP5 {
 		assertEquals("Le is_superset devrait avoir creer un tableau de 1 element.", 1, resultatListe.getAt(tailleListe - 1).size());
 		assertEquals("Le is_superset devrait avoir creer un tableau avec l'element FALSE.", "false", resultatListe.getAt(tailleListe-1).get(0));
 	}
+	
+	/**
+	 * ===================================== My List =====================================
+	 */
 	
 	/**
 	 * MyList, methodes add, getSize, getAt, setAt
@@ -389,4 +419,8 @@ public class TP5 {
 
 		uneListe.removeItem(unArray2);	// Lance une erreur.
 	}
+	
+	/**
+	 * ===================================== Linked List =====================================
+	 */
 }

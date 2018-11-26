@@ -162,7 +162,7 @@ public class TP5 {
 	}
 	
 	/**
-	 * MyList, methodes removeAt
+	 * MyList, methode removeAt
 	 */
 	@Test()
 	public void test8() throws IOException {
@@ -182,7 +182,7 @@ public class TP5 {
 	}
 	
 	/**
-	 * MyList, methodes removeItem
+	 * MyList, methode removeItem
 	 */
 	@Test()
 	public void test9() throws IOException {
@@ -214,7 +214,7 @@ public class TP5 {
 	}
 	
 	/**
-	 * MyList, setSize
+	 * MyList, methode setSize
 	 */
 	@Test()
 	public void test10() throws IOException {
@@ -228,7 +228,7 @@ public class TP5 {
 	}
 	
 	/**
-	 * MyList, methodes reset
+	 * MyList, methode reset
 	 */
 	@Test()
 	public void test11() throws IOException {
@@ -254,5 +254,21 @@ public class TP5 {
 		assertEquals("La liste devrait avoir une taille de 0.", 0, uneListe.getSize());
 		assertNull("L'attribut start devrait etre null.", uneListe.getStart());
 		assertNull("L'attribut current devrait etre null.", uneListe.getCurrent());
+	}
+	
+	/**
+	 * MyList, methode removeAt
+	 */
+	@Test(expected = ArrayIndexOutOfBoundsException.class)
+	public void test12() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
+		
+		MyList uneListe = new MyList();
+		uneListe.add(unArray);
+		
+		uneListe.removeAt(2); // Erreur
 	}
 }

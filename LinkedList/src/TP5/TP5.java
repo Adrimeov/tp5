@@ -217,7 +217,7 @@ public class TP5 {
 		assertEquals("La liste MyList devrait avoir une taille de 0.", 0, uneListe.getSize());
 		
 		uneListe.add(unArray);
-		uneListe.add(unArray2);
+		uneListe.add(unArray);
 		uneListe.add(unArray2);
 		uneListe.removeItem(unArray2);
 		assertEquals("La liste MyList devrait avoir une taille de 2.", 2, uneListe.getSize());
@@ -336,5 +336,50 @@ public class TP5 {
 		uneListe.setCurrent(uneListe.new Elem(unArray, null));
 
 		assertEquals("Le current devrait contenir le tableau ci-dessus.", unArray, uneListe.getCurrent().getContent());
+	}
+	
+	/**
+	 * MyList, methode setStart
+	 * On fixe l'attribut start et on verifie que c'est bel et bien la bonne valeur qui
+	 * a ete attribue a l'attribut.
+	 */
+	@Test()
+	public void test16() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
+		
+		MyList uneListe = new MyList();
+		uneListe.setStart(uneListe.new Elem(unArray, null));
+
+		assertEquals("Le current devrait contenir le tableau ci-dessus.", unArray, uneListe.getStart().getContent());
+	}
+	
+	/**
+	 * MyList, methode removeItem. Devrait ici lancer une exception puisque si on n'entre pas
+	 * dans la boucle du else de la fonction removeItem (ligne 102), on exécute immediatement
+	 * la ligne 109 mais la variable toRemove ne contient rien. Alors une erreur est lancee.
+	 */
+	@Test(expected = NullPointerException.class)
+	public void test17() throws IOException {
+		ArrayList<Object> unArray = new ArrayList<Object>();
+		unArray.add(0);
+		unArray.add(1);
+		unArray.add(2);
+		
+		ArrayList<Object> unArray2 = new ArrayList<Object>();
+		unArray2.add(3);
+		unArray2.add(4);
+		
+		MyList uneListe = new MyList();
+		uneListe.add(unArray);
+		uneListe.add(unArray);
+		uneListe.add(unArray2);
+		uneListe.add(unArray);
+		uneListe.add(unArray);
+		uneListe.setStart(null);
+
+		uneListe.removeItem(unArray2);	// Lance une erreur.
 	}
 }

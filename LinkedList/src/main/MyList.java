@@ -133,7 +133,7 @@ public class MyList implements MyListInterface {
 		return current.getContent();
 	}
 
-	class Elem {
+	public class Elem {
 
 		private ArrayList<Object> content;
 		private Elem next;

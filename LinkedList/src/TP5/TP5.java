@@ -45,7 +45,9 @@ public class TP5 {
 		ArrayList<Object> arr2 = new ArrayList<Object>();
 		arr1.add(1);
 		arr2.add(4);
+		
 		resultatListe = list.build(Operator.UNION, arr1, arr2);
+		
 		int tailleListe = resultatListe.getSize();
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("L'union devrait avoir creer un tableau de deux elements.", 2, resultatListe.getAt(tailleListe-1).size());
@@ -66,7 +68,9 @@ public class TP5 {
 		arr1.add(1);
 		arr2.add(4);
 		arr2.add(1);
+		
 		resultatListe = list.build(Operator.UNION, arr1, arr2);
+		
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("L'union devrait avoir creer un tableau de 2 elements en position 0.", 2, resultatListe.getAt(0).size());
 		assertEquals("L'union devrait avoir creer un tableau de 2 elements en position 1.", 2, resultatListe.getAt(1).size());
@@ -106,8 +110,10 @@ public class TP5 {
 		ArrayList<Object> arr2 = new ArrayList<Object>();
 		arr1.add(1);
 		arr2.add(4);
+		
 		resultatListe = list.build(Operator.DIFFERENCE, arr1, arr2);
 		int tailleListe = resultatListe.getSize();
+		
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("La difference devrait avoir creer un tableau de 1 element.", 1, resultatListe.getAt(tailleListe - 1).size());
 		assertEquals("La difference devrait avoir creer un tableau avec l'element 1.", 1, resultatListe.getAt(tailleListe-1).get(0));
@@ -124,8 +130,10 @@ public class TP5 {
 		ArrayList<Object> arr2 = new ArrayList<Object>();
 		arr1.add(1);
 		arr2.add(4);
+		
 		resultatListe = list.build(Operator.SYMMETRIC_DIFFERENCE, arr1, arr2);
 		int tailleListe = resultatListe.getSize();
+		
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("La difference symetrique devrait avoir creer un tableau de 2 elements.", 2, resultatListe.getAt(tailleListe - 1).size());
 		assertEquals("La difference symetrique devrait avoir creer un tableau avec l'element 1.", 1, resultatListe.getAt(tailleListe-1).get(0));
@@ -143,8 +151,10 @@ public class TP5 {
 		ArrayList<Object> arr2 = new ArrayList<Object>();
 		arr1.add(1);
 		arr2.add(4);
+		
 		resultatListe = list.build(Operator.IS_SUBSET, arr1, arr2);
 		int tailleListe = resultatListe.getSize();
+		
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("Le is_subset devrait avoir creer un tableau de 1 element.", 1, resultatListe.getAt(tailleListe - 1).size());
 		assertEquals("Le is_subset devrait avoir creer un tableau avec l'element FALSE.", "false", resultatListe.getAt(tailleListe-1).get(0));
@@ -161,8 +171,10 @@ public class TP5 {
 		ArrayList<Object> arr2 = new ArrayList<Object>();
 		arr1.add(1);
 		arr2.add(4);
+		
 		resultatListe = list.build(Operator.IS_SUPERSET, arr1, arr2);
 		int tailleListe = resultatListe.getSize();
+		
 		assertEquals("La liste resultante devrait avoir une longueur de 3.", 3, resultatListe.getSize());
 		assertEquals("Le is_superset devrait avoir creer un tableau de 1 element.", 1, resultatListe.getAt(tailleListe - 1).size());
 		assertEquals("Le is_superset devrait avoir creer un tableau avec l'element FALSE.", "false", resultatListe.getAt(tailleListe-1).get(0));
